@@ -24,6 +24,10 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 
 import { AuthProvider } from "./context/AuthContext";
 import FooterAdmin from "./pages/admin/FooterAdmin";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
+import WhatsAppFloatingButton from "./components/Whatsappfloatingbutton";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +47,9 @@ const App = () => (
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/kyc" element={<KYC />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/cookies" element={<CookiePolicy />} />
 
               {/* User Dashboard (optional) */}
               <Route
@@ -76,6 +83,7 @@ const App = () => (
               {/* Catch-All */}
               <Route path="*" element={<NotFound />} />
             </Routes>
+            <WhatsAppFloatingButton />
           </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>
