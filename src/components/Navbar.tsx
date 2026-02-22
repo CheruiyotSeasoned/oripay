@@ -11,6 +11,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
+  const resolvedTheme = theme === "system" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : theme;
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -40,15 +41,15 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             {/* Logo Image */}
-            <div className="w-100 h-10 rounded-lg overflow-hidden shadow-glow">
+            <Link to="/" className="flex items-center">
               <img
-                src="/logo.png" // <-- Replace with your actual logo path
+                src={resolvedTheme === "dark" ? "/logo-white.png" : "/logo.png"}
                 alt="Oripay Exchange Logo"
-                className="w-full h-full object-cover"
+                className="h-10 w-auto object-contain"
               />
-            </div>
+            </Link>
 
-            
+
           </Link>
 
 
@@ -59,8 +60,8 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 className={`text-sm font-medium transition-smooth ${isActive(link.path)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
                   }`}
               >
                 {link.name}
@@ -132,8 +133,8 @@ const Navbar = () => {
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 className={`block py-2 px-3 rounded-lg transition-smooth ${isActive(link.path)
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-muted"
                   }`}
               >
                 {link.name}
