@@ -83,7 +83,7 @@ const App = () => (
               {/* Catch-All */}
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <WhatsAppFloatingButton />
+            {/* <WhatsAppFloatingButton /> */}
           </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>
